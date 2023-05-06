@@ -11,6 +11,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         >
+    
     <Window.Resources>
         <Style TargetType="Button">
             <Style.Resources>
@@ -37,6 +38,9 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#392a3d" />
                 </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="Gray" />
+                </Trigger>
             </Style.Triggers>
         </Style>
         <Style TargetType="Label">
@@ -56,10 +60,11 @@
                 <GradientStop Color="#281a2c" Offset="1.0"/>
             </LinearGradientBrush>
         </Border.Background>
-        <Grid>
+        <Grid x:Name="Grid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="60"></RowDefinition>
@@ -74,32 +79,39 @@
             </Grid.ColumnDefinitions>
 
             <!-- num buttons -->
+            
+            <Button x:Name="btnNum0" Grid.Column="1" Content="0" Margin="3,3,3,3" Grid.Row="7" Click="btnNum_Click"/>
 
-            <Button x:Name="btnNum0" Grid.Column="0" Grid.ColumnSpan="3" Content="0" Margin="3,3,3,3" Grid.Row="6" Click="btnNum_Click"/>
+            <Button x:Name="btnNum1" Grid.Column="0" Content="1" Margin="3,3,3,3" Grid.Row="6" Click="btnNum_Click"/>
+            <Button x:Name="btnNum2" Grid.Column="1" Content="2" Margin="3,3,3,3" Grid.Row="6" Click="btnNum_Click"/>
+            <Button x:Name="btnNum3" Grid.Column="2" Content="3" Margin="3,3,3,3" Grid.Row="6" Click="btnNum_Click"/>
 
-            <Button x:Name="btnNum1" Grid.Column="0" Content="1" Margin="3,3,3,3" Grid.Row="5" Click="btnNum_Click"/>
-            <Button x:Name="btnNum2" Grid.Column="1" Content="2" Margin="3,3,3,3" Grid.Row="5" Click="btnNum_Click"/>
-            <Button x:Name="btnNum3" Grid.Column="2" Content="3" Margin="3,3,3,3" Grid.Row="5" Click="btnNum_Click"/>
+            <Button x:Name="btnNum4" Grid.Column="0" Content="4" Margin="3,3,3,3" Grid.Row="5" Click="btnNum_Click"/>
+            <Button x:Name="btnNum5" Grid.Column="1" Content="5" Margin="3,3,3,3" Grid.Row="5" Click="btnNum_Click"/>
+            <Button x:Name="btnNum6" Grid.Column="2" Content="6" Margin="3,3,3,3" Grid.Row="5" Click="btnNum_Click"/>
 
-            <Button x:Name="btnNum4" Grid.Column="0" Content="4" Margin="3,3,3,3" Grid.Row="4" Click="btnNum_Click"/>
-            <Button x:Name="btnNum5" Grid.Column="1" Content="5" Margin="3,3,3,3" Grid.Row="4" Click="btnNum_Click"/>
-            <Button x:Name="btnNum6" Grid.Column="2" Content="6" Margin="3,3,3,3" Grid.Row="4" Click="btnNum_Click"/>
-
-            <Button x:Name="btnNum7" Grid.Column="0" Content="7" Margin="3,3,3,3" Grid.Row="3" Click="btnNum_Click"/>
-            <Button x:Name="btnNum8" Grid.Column="1" Content="8" Margin="3,3,3,3" Grid.Row="3" Click="btnNum_Click"/>
-            <Button x:Name="btnNum9" Grid.Column="2" Content="9" Margin="3,3,3,3" Grid.Row="3" Click="btnNum_Click"/>
+            <Button x:Name="btnNum7" Grid.Column="0" Content="7" Margin="3,3,3,3" Grid.Row="4" Click="btnNum_Click"/>
+            <Button x:Name="btnNum8" Grid.Column="1" Content="8" Margin="3,3,3,3" Grid.Row="4" Click="btnNum_Click"/>
+            <Button x:Name="btnNum9" Grid.Column="2" Content="9" Margin="3,3,3,3" Grid.Row="4" Click="btnNum_Click"/>
 
             <!-- op buttons -->
-            <Button x:Name="btnClearE" Grid.Column="0" Content="CE" Margin="3,3,3,3" Grid.Row="2" Click="btnClearE_Click"/>
-            <Button x:Name="btnClear" Grid.Column="1" Content="C" Margin="3,3,3,3" Grid.Row="2" Click="btnClear_Click"/>
-            <Button x:Name="btnBack" Grid.Column="2" Content="Back" Margin="3,3,3,3" Grid.Row="2" Click="btnBack_Click" />
 
-            <Button x:Name="btnDivide" Grid.Column="3" Content="/" Margin="3,3,3,3" Grid.Row="2" Click="btnDiv_Click"/>
-            <Button x:Name="btnMuliply" Grid.Column="3" Content="*" Margin="3,3,3,3" Grid.Row="3" Click="btnMult_Click"/>
-            <Button x:Name="btnMinus" Grid.Column="3" Content="-" Margin="3,3,3,3" Grid.Row="4" Click="btnMinus_Click"/>
-            <Button x:Name="btnPlus" Grid.Column="3" Content="+" Margin="3,3,3,3" Grid.Row="5" Click="btnPlus_Click"/>
+            <Button x:Name="btnClearE" Grid.Column="1" Content="CE" Margin="3,3,3,3" Grid.Row="2" Click="btnClearE_Click"/>
+            <Button x:Name="btnClear" Grid.Column="2" Content="C" Margin="3,3,3,3" Grid.Row="2" Click="btnClear_Click"/>
+            <Button x:Name="btnBack" Grid.Column="3" Content="Back" Margin="3,3,3,3" Grid.Row="2" Click="btnBack_Click" />
 
-            <Button x:Name="btnEquals" Grid.Column="3" Content="=" Margin="3,3,3,3" Grid.Row="6" Click="btnEquals_Click"/>
+            <Button x:Name="btnDivide" Grid.Column="3" Content="/" Margin="3,3,3,3" Grid.Row="3" Click="btnDiv_Click" FontSize="30"/>
+            <Button x:Name="btnMuliply" Grid.Column="3" Content="*" Margin="3,3,3,3" Grid.Row="4" Click="btnMult_Click" FontSize="30"/>
+            <Button x:Name="btnMinus" Grid.Column="3" Content="-" Margin="3,3,3,3" Grid.Row="5" Click="btnMinus_Click" FontSize="30"/>
+            <Button x:Name="btnPlus" Grid.Column="3" Content="+" Margin="3,3,3,3" Grid.Row="6" Click="btnPlus_Click" FontSize="30"/>
+
+            <Button x:Name="btnEquals" Grid.Column="3" Content="=" Margin="3,3,3,3" Grid.Row="7" Click="btnEquals_Click" FontSize="30"/>
+            <Button x:Name="btnNegate" Grid.Column="0" Content="+/-" Margin="3,3,3,3" Grid.Row="7" Click="btnNegate_Click"/>
+            <Button x:Name="btnPercent" Grid.Column="0" Content="%" Margin="3,3,3,3" Grid.Row="2" Click="btnPercent_Click"/>
+            <Button x:Name="btnComma" Grid.Column="2" Content="." Margin="3,3,3,3" Grid.Row="7" Click="btnComma_Click"/>
+            <Button x:Name="btn1x" Grid.Column="0" Content="1/x" Margin="3,3,3,3" Grid.Row="3" Click="btn1x_Click"/>
+            <Button x:Name="btnDegree" Grid.Column="1" Content="Х²" Margin="3,3,3,3" Grid.Row="3" Click="btnDegree_Click"/>
+            <Button x:Name="btnRoot" Grid.Column="2" Content="√x" Margin="3,3,3,3" Grid.Row="3" Click="btnRoot_Click"/>
 
 
             <!-- display buttons -->
