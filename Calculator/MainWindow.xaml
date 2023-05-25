@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="Calculator"
-        Height="505" Width="335"
+        Height="505" Width="410"
         WindowStyle="none"
         AllowsTransparency="True"
         Background="Transparent"
@@ -76,6 +76,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <!-- num buttons -->
@@ -98,7 +99,7 @@
 
             <Button x:Name="btnClearE" Grid.Column="1" Content="CE" Margin="3,3,3,3" Grid.Row="2" Click="btnClearE_Click"/>
             <Button x:Name="btnClear" Grid.Column="2" Content="C" Margin="3,3,3,3" Grid.Row="2" Click="btnClear_Click"/>
-            <Button x:Name="btnBack" Grid.Column="3" Content="Back" Margin="3,3,3,3" Grid.Row="2" Click="btnBack_Click" />
+            <Button x:Name="btnBack" Grid.Column="3" Content="Back" Margin="3,3,3,3" Grid.Row="2" Grid.ColumnSpan="2" Click="btnBack_Click" />
 
             <Button x:Name="btnDivide" Grid.Column="3" Content="/" Margin="3,3,3,3" Grid.Row="3" Click="btnDiv_Click" FontSize="30"/>
             <Button x:Name="btnMuliply" Grid.Column="3" Content="*" Margin="3,3,3,3" Grid.Row="4" Click="btnMult_Click" FontSize="30"/>
@@ -112,11 +113,19 @@
             <Button x:Name="btn1x" Grid.Column="0" Content="1/x" Margin="3,3,3,3" Grid.Row="3" Click="btn1x_Click"/>
             <Button x:Name="btnDegree" Grid.Column="1" Content="Х²" Margin="3,3,3,3" Grid.Row="3" Click="btnDegree_Click"/>
             <Button x:Name="btnRoot" Grid.Column="2" Content="√x" Margin="3,3,3,3" Grid.Row="3" Click="btnRoot_Click"/>
+            
+            <!-- M Buttons -->
 
-
-            <!-- display buttons -->
-            <Label x:Name="outputSmall" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="3 6 3 3"  HorizontalContentAlignment="Right" BorderBrush="Black" BorderThickness="1" FontSize="15px"/>
-            <Label x:Name="outputBig" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="3" HorizontalContentAlignment="Right" BorderBrush="Black" BorderThickness="1" FontSize="50px" FontWeight="DemiBold" VerticalContentAlignment="Center"/>
+            <Button x:Name="MC" Grid.Column="4" Content="MC" Margin="3,3,3,3" Grid.Row="3"  Click="MC_Click"/>
+            <Button x:Name="MR" Grid.Column="4" Content="MR" Margin="3,3,3,3" Grid.Row="4" Click="MR_Click"/>
+            <Button x:Name="MPlus" Grid.Column="4" Content="M+" Margin="3,3,3,3" Grid.Row="5" Click="MPlus_Click"/>
+            <Button x:Name="MMinus" Grid.Column="4" Content="M-" Margin="3,3,3,3" Grid.Row="6" Click="MMinus_Click"/>
+            <Button x:Name="MS" Grid.Column="4" Content="MS" Margin="3,3,3,3" Grid.Row="7" Click="MS_Click"/>
+            
+            
+            <!-- display -->
+            <Label x:Name="outputSmall" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" Margin="3 6 3 3"  HorizontalContentAlignment="Right" BorderBrush="Black" BorderThickness="1" FontSize="15px"/>
+            <Label x:Name="outputBig" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Margin="3" HorizontalContentAlignment="Right" BorderBrush="Black" BorderThickness="1" FontSize="28px" FontWeight="DemiBold" VerticalContentAlignment="Center" />
 
         </Grid>
 

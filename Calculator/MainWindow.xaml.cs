@@ -26,6 +26,7 @@ namespace Calculator
         private double inp1 = 0;
         private double inp2 = 0;
         bool flag = false;
+        bool backFlag;
         double memoryNum = 0;
         int counter = 0;
         List<Button> btns;
@@ -52,6 +53,7 @@ namespace Calculator
                 outputBig.Content = (sender as Button).Content.ToString();
             }
             else outputBig.Content += (sender as Button).Content.ToString();
+            backFlag = true;
         }
 
         private void btnPlus_Click(object sender, RoutedEventArgs e)
@@ -60,7 +62,7 @@ namespace Calculator
             btnEq(operation);
             //outputSmall.Content = outputBig.Content + operation;
             flag = false;
-            memoryNum = autoEq(inp1, operation);
+            
             counter= 0;
         }
         private void btnMinus_Click(object sender, RoutedEventArgs e)
@@ -68,25 +70,26 @@ namespace Calculator
             operation = "-";
             btnEq(operation);
             flag = false;
-            memoryNum = autoEq(inp1, operation);
+            
         }
         private void btnMult_Click(object sender, RoutedEventArgs e)
         {
             operation = "*";
             btnEq(operation);
             flag = false;
-            memoryNum = autoEq(inp1, operation);
+            
         }
         private void btnDiv_Click(object sender, RoutedEventArgs e)
         {
             operation = "/";
             btnEq(operation);
             flag = false;
-            memoryNum = autoEq(inp1, operation);
+            
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (outputBig.Content.ToString() != "0" && outputBig.Content.ToString().Length != 1)
+            
+            if (outputBig.Content.ToString() != "0" && outputBig.Content.ToString().Length != 1 && backFlag)
             {
                 StringBuilder sb = new StringBuilder(outputBig.Content.ToString());
                 sb.Remove(sb.Length-1, 1);
@@ -110,6 +113,7 @@ namespace Calculator
             outputBig.Content = result.ToString();
 
             outputSmall.Content = "";
+            backFlag = false;
         }
 
         private void btnClearE_Click(object sender, RoutedEventArgs e)
@@ -177,12 +181,12 @@ namespace Calculator
             {
                 outputBig.Content = (inp1 / 100 * double.Parse(outputBig.Content.ToString())).ToString().Replace('.',',');
             }
-            
+            backFlag = false;
         }
 
         private void btnComma_Click(object sender, RoutedEventArgs e)
         {
-            if (outputBig.Content.ToString() != "0," && !outputBig.Content.ToString().Contains(','))
+            if (outputBig.Content.ToString() != "0," && !outputBig.Content.ToString().Contains(',') && char.IsDigit(Convert.ToChar(outputBig.Content.ToString()[outputBig.Content.ToString().Length-1])))
             {
                 outputBig.Content += ",";
             }
@@ -190,27 +194,30 @@ namespace Calculator
 
         private void btn1x_Click(object sender, RoutedEventArgs e)
         {
-            if (outputBig.Content.ToString() != "0")
-            {
+            //if (outputBig.Content.ToString() != "0")
+            //{
                 outputBig.Content = (1 / double.Parse(outputBig.Content.ToString())).ToString().Replace('.', ',');
-            }
+            //}
+            backFlag = false;
         }
 
         private void btnDegree_Click(object sender, RoutedEventArgs e)
         {
-            outputBig.Content = Math.Pow(double.Parse(outputBig.Content.ToString()), 2);
+            outputBig.Content = (Math.Pow(double.Parse(outputBig.Content.ToString()), 2)).ToString().Replace('.', ',');
+            backFlag = false;
         }
 
         private void btnRoot_Click(object sender, RoutedEventArgs e)
         {
             if (double.Parse(outputBig.Content.ToString()) >= 0)
-                outputBig.Content = Math.Pow(double.Parse(outputBig.Content.ToString()), 0.5);
+                outputBig.Content = (Math.Pow(double.Parse(outputBig.Content.ToString()), 0.5)).ToString().Replace('.', ',');
             else
             {
                 outputBig.Content = "Impossible";
                 flag = false;
                 btnsDisable(btns);
-            } 
+            }
+            backFlag = false;
         }
         private void btnsEnable()
         {
@@ -238,6 +245,33 @@ namespace Calculator
             {
                 b.IsEnabled=true;
             }
+        }
+
+        private void MC_Click(object sender, RoutedEventArgs e)
+        {
+            memoryNum = 0;
+        }
+
+        private void MR_Click(object sender, RoutedEventArgs e)
+        {
+            outputBig.Content = memoryNum.ToString();
+            backFlag = false;
+        }
+
+        private void MPlus_Click(object sender, RoutedEventArgs e)
+        {
+            memoryNum += double.Parse(outputBig.Content.ToString());
+        }
+
+        private void MS_Click(object sender, RoutedEventArgs e)
+        {
+            memoryNum = double.Parse(outputBig.Content.ToString());
+        }
+
+        private void MMinus_Click(object sender, RoutedEventArgs e)
+        {
+            memoryNum -= double.Parse(outputBig.Content.ToString());
+            
         }
     }
 }
